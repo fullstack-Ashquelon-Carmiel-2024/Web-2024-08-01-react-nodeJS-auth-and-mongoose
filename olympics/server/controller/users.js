@@ -1,4 +1,17 @@
-const User = require('../model/User')
+const User = require('../model/User');
+const Sport = require('../model/Sport');
+const { getAllId } = require('./roles');
+
+let allRoleId;
+(async () => {
+    allRoleId = await getAllId();
+})()
+
+/* allRoleId looks like 
+
+{admin:'7676767676',
+ moderator: '78787576',
+ user: '8868498948'} */
 
 const UserController = {
 
@@ -13,9 +26,14 @@ const UserController = {
     },
     
     
-    createSport: async (req,res)=>{
+    createUser: async (req,res)=>{
         try{
-            const newUser = await User.create(req.body)
+
+            let sport = req.body.sport ? 
+                  await Sport.findOne({name:req.body.sport}) : null;
+
+            const newUser = await User.create({...req.body,
+                    role: allRoleId[req.body.role], sport })
             res.status(201).json(newUser)
         }catch(err){
             console.error("There is an error:",err)
