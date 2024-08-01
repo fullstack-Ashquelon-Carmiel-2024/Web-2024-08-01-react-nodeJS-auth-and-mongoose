@@ -80,12 +80,12 @@ async function initSport() {
 
 }
 
-async function init() {
+// IIFE - Immediate I Functional Expression
+(async function () {
 
     await initRole();
     initUser();
     initSport();
-}
-
-init()
+    
+})()
 

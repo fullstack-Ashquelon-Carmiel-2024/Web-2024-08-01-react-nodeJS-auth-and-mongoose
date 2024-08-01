@@ -1,10 +1,8 @@
 const express = require('express');
 require('dotenv').config();
+require('./db/db');
 
-const sportRouter = require('./routes/sports');
-
-const connectDB = require('./db/db');
-connectDB();
+const { sportRouter, userRouter } = require('./routes/index');
 
 require('./model/index');
 
@@ -20,6 +18,7 @@ app.use(express.urlencoded({extended: true}))
 /******** ROUTES **********/
 
 app.use('/api/sports',sportRouter);
+app.use('/api/users',userRouter);
 
 app.get('/', (req, res) => {
     res.send('<h1>I am Olympics API</h1>');
