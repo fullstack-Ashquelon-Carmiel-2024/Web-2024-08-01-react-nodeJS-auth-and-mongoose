@@ -7,6 +7,8 @@ userRouter.get('/',UserController.getUsers);
 
 userRouter.post('/',UserController.createUser);
 
+userRouter.patch('/:id', UserController.updatePassword);
+
 // userRouter.put('/:id',UserController.updateUser);
 
 // userRouter.delete('/:id',UserController.deleteUser);
