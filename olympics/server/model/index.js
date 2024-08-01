@@ -15,17 +15,17 @@ async function initRole() {
         }
         
         new Role({userType: "user"}).save();
-        console.log("added 'user' to roles collection");
+        //console.log("added 'user' to roles collection");
 
         new Role({userType: "moderator"}).save();
-        console.log("added 'moderator' to roles collection");
+        //console.log("added 'moderator' to roles collection");
 
         admin = new Role({userType: "admin"});
         admin.save();
-        console.log("added 'admin' to roles collection");
+        //console.log("added 'admin' to roles collection");
 
         const roles = await Role.find();
-        console.log(roles);
+        //console.log(roles);
 
     } catch(err) {
         console.log(err.message)
@@ -45,7 +45,7 @@ async function initUser() {
         }
         
         let adminType = Role.findOne({userType:'admin'});
-        console.log(`adminType: \n`, adminType);
+        //console.log(`adminType: \n`, adminType);
 
         new User({name: "Yael Arad", 
                  email:'yarad@gmail.com',password:'123',
@@ -72,7 +72,7 @@ async function initSport() {
         new Sport({name: "judo", 
                  isOlympic:true,isSummerOlympic:true,
                   img: 'judo_pictogram.svg'}).save();
-        console.log("added 'judo' to sports collection");
+        //console.log("added 'judo' to sports collection");
 
     } catch(err) {
         console.log(err.message)
@@ -86,6 +86,6 @@ async function initSport() {
     await initRole();
     initUser();
     initSport();
-    
+
 })()
 

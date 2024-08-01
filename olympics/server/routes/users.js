@@ -5,10 +5,10 @@ const userRouter = new Router();
 
 userRouter.get('/',UserController.getUsers);
 
-userRouter.post('/',UserController.createUser);
+// userRouter.post('/',UserController.createUser);
 
-userRouter.put('/:id',UserController.updateUser);
+// userRouter.put('/:id',UserController.updateUser);
 
-userRouter.delete('/:id',UserController.deleteUser);
+// userRouter.delete('/:id',UserController.deleteUser);
 
 module.exports = userRouter;

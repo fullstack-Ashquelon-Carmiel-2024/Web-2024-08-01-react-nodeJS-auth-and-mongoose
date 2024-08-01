@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
 
-// MISSION: Convert connectDB into IIFE and run
-const connectDB = async () => {
+// MISSION: Convert connectDB into 
+//          IIFE - Immediatly Invokeed Function Expression - and run
+( async () => {
     try {
 
         console.log(`process.env.MONGODB_URI :  
@@ -16,8 +17,6 @@ const connectDB = async () => {
         throw err;
 
     }
-};
+})();
 
-connectDB();
-
-module.exports = connectDB;
+// module.exports = connectDB;

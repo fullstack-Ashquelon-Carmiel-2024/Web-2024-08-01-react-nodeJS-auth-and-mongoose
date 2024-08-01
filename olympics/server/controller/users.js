@@ -1,11 +1,11 @@
-const Sport = require('../model/Sport')
+const User = require('../model/User')
 
-const SportController = {
+const UserController = {
 
-    getSports: async (req,res)=>{
+    getUsers: async (req,res)=>{
         try{
-            const sport = await Sport.find()
-            res.status(200).json(sport)
+            const user = await User.find()
+            res.status(200).json(user)
         }catch(err){
             console.error("There is an error:",err)
             res.status(500).json({err: "Internal error"})
@@ -15,8 +15,8 @@ const SportController = {
     
     createSport: async (req,res)=>{
         try{
-            const newSport = await Sport.create(req.body)
-            res.status(201).json(newSport)
+            const newUser = await User.create(req.body)
+            res.status(201).json(newUser)
         }catch(err){
             console.error("There is an error:",err)
             res.status(500).json({err: err.message})
@@ -25,12 +25,12 @@ const SportController = {
     
     
     
-    updateSport: async(req,res)=>{
+    updateUser: async(req,res)=>{
         try{
-            const updatedSport = await Sport.findByIdAndUpdate(req.params.id, req.body,{
+            const updatedUser = await User.findByIdAndUpdate(req.params.id, req.body,{
                 new:true
             })
-            res.status(200).json(updatedSport)
+            res.status(200).json(updatedUser)
         }
         catch(err){
             console.error("There is an error:",err)
@@ -39,9 +39,9 @@ const SportController = {
     },
     
     
-    deleteSport: async(req,res)=>{
+    deleteUser: async(req,res)=>{
         try{
-            await Sport.findByIdAndDelete(req.params.id)
+            await User.findByIdAndDelete(req.params.id)
             res.status(204).send()
         }
         catch(err){
@@ -52,4 +52,4 @@ const SportController = {
 
 }
 
-module.exports = SportController
+module.exports = UserController
