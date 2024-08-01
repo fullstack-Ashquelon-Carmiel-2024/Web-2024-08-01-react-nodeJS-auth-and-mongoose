@@ -52,4 +52,4 @@ const SportController = {
 
 }
 
-module.exports = { SportController }
+module.exports = SportController
